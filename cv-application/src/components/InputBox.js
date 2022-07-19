@@ -33,7 +33,7 @@ class InputBox extends Component {
     if (editing) {
       return (
         <div>
-          <input type='text' onChange={this.handleChange} value={value} />
+          <input type='text' onChange={this.handleChange} defaultValue={value} />
           <button onClick={this.resubmit}>Done</button>
         </div>
       )
