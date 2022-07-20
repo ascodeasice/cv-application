@@ -28,13 +28,19 @@ class InputBox extends Component {
     })
   }
 
+  handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      this.resubmit();
+    }
+  }
+
   render() {
     const { editing, value } = this.state;
     if (editing) {
       return (
         <div>
-          <input type='text' onChange={this.handleChange} defaultValue={value} />
-          <button onClick={this.resubmit}>Done</button>
+          <input type='text' onChange={this.handleChange} defaultValue={value} onKeyDown={this.handleKeyDown} />
+          <button className="inputBoxButton" onClick={this.resubmit}>Done</button>
         </div>
       )
     } else {

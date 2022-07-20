@@ -1,3 +1,7 @@
 .educationContainer {
   border-top: 2px solid grey;
 }
+
+#addSchoolBtn {
+  display: none;
+}

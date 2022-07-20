@@ -8,15 +8,7 @@ class Job extends Component {
     super(props);
 
     this.state = {
-      jobs: [
-        {
-          id: uniqid(),
-          companyName: 'company name',
-          title: 'position title',
-          mainTasks: 'main tasks of the job',
-          date: 'date(from and until)',
-          editing: false
-        }],
+      jobs: [],
     };
   }
 
@@ -67,11 +59,22 @@ class Job extends Component {
     })
   }
 
+  showBtn = () => {
+    document.getElementById('addJobBtn').style.display = 'block';
+  }
+
+  hideBtn = () => {
+    document.getElementById('addJobBtn').style.display = 'none';
+  }
+
+
   render() {
     return (
-      <div>
-        <h2>Practical experience </h2>
-        <button onClick={this.addJob}>Add</button>
+      <div className="jobContainer">
+        <div class="titleWrapper" onMouseOver={this.showBtn} onMouseLeave={this.hideBtn}>
+          <h1>Practical experience</h1>
+          <button id='addJobBtn' className="inputBoxButton" onClick={this.addJob}>Add</button>
+        </div>
         <JobOverview jobs={this.state.jobs} editJob={this.editJob}
           resubmitJob={this.resubmitJob} deleteJob={this.deleteJob} />
       </div>

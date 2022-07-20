@@ -1,10 +1,32 @@
 :root {
   --blue: #9CB4CC;
+  --deepBlue: #748DA6;
+  --buttonHeight: 20px;
 }
 
 body {
   margin: 0;
   font-family: 'Open Sans', sans-serif;
+}
+
+button {
+  border: none;
+  margin: 10px 10px 10px 0;
+  background-color: var(--deepBlue);
+  height: var(--buttonHeight);
+  width: calc(var(--buttonHeight)*3);
+  color: white;
+}
+
+.inputBoxButton {
+  margin-left: 10px;
+}
+
+.titleWrapper {
+  display: grid;
+  grid-template-columns: min-content min-content;
+  align-items: center;
+  white-space: nowrap;
 }
 
 #mainContainer {
@@ -17,7 +39,24 @@ body {
 }
 
 #header {
-  background-color: var(--blue);
+  background-color: var(--deepBlue);
   box-shadow: 0 0 10px black;
   color: white;
+  height: 100%;
+  margin-bottom: 10px;
+  z-index: 1;
+}
+
+#mainContent {
+  display: grid;
+  grid-auto-rows: min-content;
+  justify-content: center;
+  background-color: var(--blue);
+}
+
+#infoContainer {
+  background-color: white;
+  margin-top: 5vh;
+  width: 50vw;
+  padding: 0 5vw 0 5vw;
 }

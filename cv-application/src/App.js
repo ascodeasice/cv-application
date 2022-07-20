@@ -14,9 +14,13 @@ export default class App extends Component {
     return (
       <div id='mainContainer'>
         <Header />
-        <General />
-        <Education />
-        <Job />
+        <div id="mainContent">
+          <div id="infoContainer">
+            <General />
+            <Education />
+            <Job />
+          </div>
+        </div>
       </div>
     )
   }

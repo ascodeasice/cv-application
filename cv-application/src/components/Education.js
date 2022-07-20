@@ -8,14 +8,7 @@ class Education extends Component {
     super(props);
 
     this.state = {
-      schools: [
-        {
-          id: uniqid(),
-          name: 'school name',
-          title: 'title',
-          date: 'date(year - year)',
-          editing: false
-        }],
+      schools: [],
     };
   }
 
@@ -66,12 +59,22 @@ class Education extends Component {
     });
   }
 
+  showBtn = () => {
+    document.getElementById('addSchoolBtn').style.display = 'block';
+  }
+
+  hideBtn = () => {
+    document.getElementById('addSchoolBtn').style.display = 'none';
+  }
+
   render() {
     const { schools } = this.state;
     return (
       <div className='educationContainer'>
-        <h1>Education experience</h1>
-        <button onClick={this.addSchool}>Add</button>
+        <div onMouseOver={this.showBtn} onMouseLeave={this.hideBtn} className="titleWrapper">
+          <h1 id='addSchoolTitle'>Education experience</h1>
+          <button id='addSchoolBtn' onClick={this.addSchool} className="inputBoxButton">Add</button>
+        </div>
         <EducationOverview schools={schools} editSchool={this.editSchool}
           resubmitSchool={this.resubmitSchool} deleteSchool={this.deleteSchool} />
       </div>

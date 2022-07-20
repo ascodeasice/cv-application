@@ -1,0 +1,7 @@
+.jobContainer {
+  border-top: 2px solid grey;
+}
+
+#addJobBtn {
+  display: none;
+}
