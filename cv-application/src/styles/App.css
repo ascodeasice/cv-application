@@ -41,6 +41,14 @@ button {
   width: 40vw;
 }
 
+.editBtn {
+  display: none;
+}
+
+.deleteBtn {
+  display: none;
+}
+
 #mainContainer {
   display: grid;
   grid-auto-rows: min-content;

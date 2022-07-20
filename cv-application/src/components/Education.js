@@ -17,7 +17,7 @@ class Education extends Component {
       schools: this.state.schools.concat({
         id: uniqid(),
         name: 'school name',
-        title: 'title',
+        title: 'bachelor, master. PhD...',
         date: 'date(year - year)',
         editing: false
       }),

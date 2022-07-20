@@ -6,6 +6,17 @@ class JobOverview extends Component {
     super(props);
   }
 
+  showBtn = (id) => {
+    document.getElementById(`editBtn${id}`).style.display = 'inline';
+    document.getElementById(`deleteBtn${id}`).style.display = 'inline';
+  }
+
+  hideBtn = (id) => {
+    document.getElementById(`editBtn${id}`).style.display = 'none';
+    document.getElementById(`deleteBtn${id}`).style.display = 'none';
+  }
+
+
   render() {
     const { jobs, resubmitJob, editJob, deleteJob } = this.props;
     return (
@@ -24,12 +35,12 @@ class JobOverview extends Component {
                   <input key={uniqid()} id={`mainTasks${job.id}`} defaultValue={job.mainTasks} />
                   <h2 key={uniqid()}>Date</h2>
                   <input key={uniqid()} id={`date${job.id}`} defaultValue={job.date} />
-                  <button key={uniqid()} onClick={() => resubmitJob(job.id)}>Done</button>
+                  <button key={uniqid()} onClick={() => resubmitJob(job.id)} className='inputBoxButton'>Done</button>
                 </div>
               )
             } else {
               return (
-                <div key={uniqid()}>
+                <div key={uniqid()} onMouseOver={() => { this.showBtn(job.id) }} onMouseLeave={() => { this.hideBtn(job.id) }}>
                   <div className="midLine"></div>
                   <h2 key={uniqid()}>Company name</h2>
                   <p key={uniqid()}>{job.companyName}</p>
@@ -39,8 +50,8 @@ class JobOverview extends Component {
                   <p key={uniqid()}>{job.date}</p>
                   <h2 key={uniqid()}>Main Tasks</h2>
                   <p key={uniqid()}>{job.mainTasks}</p>
-                  <button key={uniqid()} onClick={() => editJob(job.id)}>Edit</button>
-                  <button key={uniqid()} onClick={() => deleteJob(job.id)}>Delete</button>
+                  <button key={uniqid()} id={`editBtn${job.id}`} onClick={() => editJob(job.id)}>Edit</button>
+                  <button key={uniqid()} id={`deleteBtn${job.id}`} onClick={() => deleteJob(job.id)}>Delete</button>
                 </div>
 
               )
