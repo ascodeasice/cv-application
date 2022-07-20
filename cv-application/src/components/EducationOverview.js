@@ -15,6 +15,7 @@ class EducationOverview extends Component {
             if (school.editing) {
               return (
                 <div key={uniqid()}>
+                  <div className="midLine"></div>
                   <h2 key={uniqid()}>Name</h2>
                   <input key={uniqid()} id={`name${school.id}`} defaultValue={school.name} />
                   <h2 key={uniqid()}>Title</h2>
@@ -28,6 +29,7 @@ class EducationOverview extends Component {
             else {
               return (
                 <div key={uniqid()}>
+                  <div className="midLine"></div>
                   <h2 key={uniqid()}>Name</h2>
                   <p key={uniqid()}>{school.name}</p>
                   <h2 key={uniqid()}>Title</h2>

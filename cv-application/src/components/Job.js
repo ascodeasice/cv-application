@@ -71,7 +71,7 @@ class Job extends Component {
   render() {
     return (
       <div className="jobContainer">
-        <div class="titleWrapper" onMouseOver={this.showBtn} onMouseLeave={this.hideBtn}>
+        <div className="titleWrapper" onMouseOver={this.showBtn} onMouseLeave={this.hideBtn}>
           <h1>Practical experience</h1>
           <button id='addJobBtn' className="inputBoxButton" onClick={this.addJob}>Add</button>
         </div>

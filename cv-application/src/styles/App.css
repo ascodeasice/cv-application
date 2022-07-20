@@ -29,6 +29,18 @@ button {
   white-space: nowrap;
 }
 
+.longLine {
+  height: 2px;
+  background-color: black;
+  width: 50vw;
+}
+
+.midLine {
+  height: 2px;
+  background-color: grey;
+  width: 40vw;
+}
+
 #mainContainer {
   display: grid;
   grid-auto-rows: min-content;

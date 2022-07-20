@@ -77,6 +77,7 @@ class Education extends Component {
         </div>
         <EducationOverview schools={schools} editSchool={this.editSchool}
           resubmitSchool={this.resubmitSchool} deleteSchool={this.deleteSchool} />
+        <div className="longLine"></div>
       </div>
     )
   }

@@ -15,6 +15,7 @@ class JobOverview extends Component {
             if (job.editing) {
               return (
                 <div key={uniqid()}>
+                  <div className="midLine"></div>
                   <h2 key={uniqid()}>Company Name</h2>
                   <input key={uniqid()} id={`companyName${job.id}`} defaultValue={job.companyName} />
                   <h2 key={uniqid()}>Title</h2>
@@ -29,7 +30,8 @@ class JobOverview extends Component {
             } else {
               return (
                 <div key={uniqid()}>
-                  <h2 key={uniqid()}>Name</h2>
+                  <div className="midLine"></div>
+                  <h2 key={uniqid()}>Company name</h2>
                   <p key={uniqid()}>{job.companyName}</p>
                   <h2 key={uniqid()}>Title</h2>
                   <p key={uniqid()}>{job.title}</p>
