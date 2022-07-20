@@ -9,6 +9,7 @@ class General extends Component {
   render() {
     return (
       <div>
+        <h1>Personal Info</h1>
         <h2>Name</h2>
         <InputBox />
         <h2>Email</h2>

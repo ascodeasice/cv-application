@@ -1,6 +1,7 @@
 import { Component } from "react";
 import EducationOverview from "./EducationOverview";
 import uniqid from 'uniqid';
+import '../styles/Education.css'
 
 class Education extends Component {
   constructor(props) {
@@ -68,7 +69,7 @@ class Education extends Component {
   render() {
     const { schools } = this.state;
     return (
-      <div>
+      <div className='educationContainer'>
         <h1>Education experience</h1>
         <button onClick={this.addSchool}>Add</button>
         <EducationOverview schools={schools} editSchool={this.editSchool}

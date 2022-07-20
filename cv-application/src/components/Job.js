@@ -1,6 +1,7 @@
 import { Component } from "react";
 import uniqid from 'uniqid';
 import JobOverview from './JobOverview';
+import '../styles/Job.css';
 
 class Job extends Component {
   constructor(props) {

@@ -1,0 +1,23 @@
+:root {
+  --blue: #9CB4CC;
+}
+
+body {
+  margin: 0;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#mainContainer {
+  display: grid;
+  grid-auto-rows: min-content;
+}
+
+#mainContainer>* {
+  padding-left: 10px;
+}
+
+#header {
+  background-color: var(--blue);
+  box-shadow: 0 0 10px black;
+  color: white;
+}

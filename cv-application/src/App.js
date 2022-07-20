@@ -3,6 +3,7 @@ import Header from './components/Header';
 import General from './components/General';
 import Education from './components/Education';
 import Job from './components/Job';
+import './styles/App.css';
 
 export default class App extends Component {
   constructor(props) {
@@ -11,7 +12,7 @@ export default class App extends Component {
 
   render() {
     return (
-      <div>
+      <div id='mainContainer'>
         <Header />
         <General />
         <Education />
