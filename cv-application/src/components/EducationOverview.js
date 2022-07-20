@@ -16,11 +16,11 @@ class EducationOverview extends Component {
               return (
                 <div key={uniqid()}>
                   <h2 key={uniqid()}>Name</h2>
-                  <input name='name' key={uniqid()} id={`name${school.id}`} defaultValue={school.name} />
+                  <input key={uniqid()} id={`name${school.id}`} defaultValue={school.name} />
                   <h2 key={uniqid()}>Title</h2>
-                  <input name='title' key={uniqid()} id={`title${school.id}`} defaultValue={school.title} />
+                  <input key={uniqid()} id={`title${school.id}`} defaultValue={school.title} />
                   <h2 key={uniqid()}>Date</h2>
-                  <input name='date' key={uniqid()} id={`date${school.id}`} defaultValue={school.date} />
+                  <input key={uniqid()} id={`date${school.id}`} defaultValue={school.date} />
                   <button key={uniqid()} onClick={() => resubmitSchool(school.id)}>Done</button>
                 </div>
               )

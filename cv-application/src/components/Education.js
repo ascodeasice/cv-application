@@ -36,19 +36,6 @@ class Education extends Component {
     });
   }
 
-  handleChange = (e, id) => {
-    const newSchools = this.state.schools;
-    for (let i = 0; i < newSchools.length; i++) {
-      if (newSchools[i].id === id) {
-        newSchools[i][e.target.name] = e.target.value;
-        break;
-      }
-    }
-    this.setState({
-      schools: newSchools
-    });
-  }
-
   editSchool = (id) => {
     const newSchools = this.state.schools;
     newSchools.forEach((school) => {
@@ -82,11 +69,10 @@ class Education extends Component {
     const { schools } = this.state;
     return (
       <div>
-        <h1>Education</h1>
+        <h1>Education experience</h1>
         <button onClick={this.addSchool}>Add</button>
         <EducationOverview schools={schools} editSchool={this.editSchool}
-          resubmitSchool={this.resubmitSchool} deleteSchool={this.deleteSchool}
-          handleChange={this.handleChange} />
+          resubmitSchool={this.resubmitSchool} deleteSchool={this.deleteSchool} />
       </div>
     )
   }
