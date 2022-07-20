@@ -52,6 +52,8 @@ button {
 #mainContainer {
   display: grid;
   grid-auto-rows: min-content;
+  min-height: 100vh;
+  background-color: var(--blue);
 }
 
 #mainContainer>* {
@@ -71,7 +73,6 @@ button {
   display: grid;
   grid-auto-rows: min-content;
   justify-content: center;
-  background-color: var(--blue);
 }
 
 #infoContainer {
