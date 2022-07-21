@@ -1,50 +1,38 @@
-import { Component } from "react";
+import { useState } from "react";
 import EducationOverview from "./EducationOverview";
 import uniqid from 'uniqid';
 import '../styles/Education.css'
 
-class Education extends Component {
-  constructor(props) {
-    super(props);
+const Education = () => {
+  const [schools, setSchools] = useState([]);
 
-    this.state = {
-      schools: [],
-    };
+  const addSchool = () => {
+    setSchools(schools.concat({
+      id: uniqid(),
+      name: 'school name',
+      title: 'bachelor, master. PhD...',
+      date: 'date(year - year)',
+      editing: false
+    }))
   }
 
-  addSchool = () => {
-    this.setState({
-      schools: this.state.schools.concat({
-        id: uniqid(),
-        name: 'school name',
-        title: 'bachelor, master. PhD...',
-        date: 'date(year - year)',
-        editing: false
-      }),
-    });
+  const deleteSchool = (id) => {
+    setSchools(schools.filter((school) => school.id !== id));
   }
 
-  deleteSchool = (id) => {
-    this.setState({
-      schools: this.state.schools.filter((school) => school.id !== id)
-    });
-  }
-
-  editSchool = (id) => {
-    const newSchools = this.state.schools;
+  const editSchool = (id) => {
+    const newSchools = structuredClone(schools);// NOTE use deep copy, newSchools=schools(shallow copy) won't re-render
     newSchools.forEach((school) => {
       if (school.id === id) {
         school.editing = true;
       }
     });
 
-    this.setState({
-      schools: newSchools
-    });
+    setSchools(newSchools);
   }
 
-  resubmitSchool = (id) => {
-    const newSchools = this.state.schools;
+  const resubmitSchool = (id) => {
+    const newSchools = structuredClone(schools); // NOTE use deep copy, newSchools=schools(shallow copy) won't re-render
     newSchools.forEach((school) => {
       if (school.id === id) {
         school.name = document.getElementById(`name${id}`).value;
@@ -54,33 +42,28 @@ class Education extends Component {
       }
     });
 
-    this.setState({
-      schools: newSchools
-    });
+    setSchools(newSchools);
   }
 
-  showBtn = () => {
+  const showBtn = () => {
     document.getElementById('addSchoolBtn').style.display = 'block';
   }
 
-  hideBtn = () => {
+  const hideBtn = () => {
     document.getElementById('addSchoolBtn').style.display = 'none';
   }
 
-  render() {
-    const { schools } = this.state;
-    return (
-      <div className='educationContainer'>
-        <div onMouseOver={this.showBtn} onMouseLeave={this.hideBtn} className="titleWrapper">
-          <h1 id='addSchoolTitle'>Education experience</h1>
-          <button id='addSchoolBtn' onClick={this.addSchool} className="inputBoxButton">Add</button>
-        </div>
-        <EducationOverview schools={schools} editSchool={this.editSchool}
-          resubmitSchool={this.resubmitSchool} deleteSchool={this.deleteSchool} />
-        <div className="longLine"></div>
+  return (
+    <div className='educationContainer'>
+      <div onMouseOver={showBtn} onMouseLeave={hideBtn} className="titleWrapper">
+        <h1 id='addSchoolTitle'>Education experience</h1>
+        <button id='addSchoolBtn' onClick={addSchool} className="inputBoxButton">Add</button>
       </div>
-    )
-  }
+      <EducationOverview schools={schools} editSchool={editSchool}
+        resubmitSchool={resubmitSchool} deleteSchool={deleteSchool} />
+      <div className="longLine"></div>
+    </div>
+  )
 };
 
 export default Education;

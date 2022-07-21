@@ -1,31 +1,23 @@
-import { Component } from "react";
+import { useState } from "react";
 import uniqid from 'uniqid';
 import JobOverview from './JobOverview';
 import '../styles/Job.css';
 
-class Job extends Component {
-  constructor(props) {
-    super(props);
+const Job = () => {
+  const [jobs, setJobs] = useState([]);
 
-    this.state = {
-      jobs: [],
-    };
-  }
-
-  editJob = (id) => {
-    const newJobs = this.state.jobs;
+  const editJob = (id) => {
+    const newJobs = structuredClone(jobs);// deep copy
     newJobs.forEach((job) => {
       if (job.id === id) {
         job.editing = true;
       }
     })
-    this.setState({
-      jobs: newJobs
-    })
+    setJobs(newJobs);
   }
 
-  resubmitJob = (id) => {
-    const newJobs = this.state.jobs;
+  const resubmitJob = (id) => {
+    const newJobs = structuredClone(jobs); // deep copy
     newJobs.forEach((job) => {
       if (job.id === id) {
         job.editing = false;
@@ -35,51 +27,43 @@ class Job extends Component {
         job.date = document.getElementById(`date${id}`).value;
       }
     })
-    this.setState({
-      jobs: newJobs
-    })
+    setJobs(newJobs);
   }
 
-  deleteJob = (id) => {
-    this.setState({
-      jobs: this.state.jobs.filter((job) => job.id !== id)
-    });
+  const deleteJob = (id) => {
+    setJobs(jobs.filter((job) => job.id !== id));
   }
 
-  addJob = () => {
-    this.setState({
-      jobs: this.state.jobs.concat({
-        id: uniqid(),
-        companyName: 'company name',
-        title: 'position title',
-        mainTasks: 'main tasks of the job',
-        date: 'date(from and until)',
-        editing: false
-      })
-    })
+  const addJob = () => {
+    setJobs(jobs.concat({
+      id: uniqid(),
+      companyName: 'company name',
+      title: 'position title',
+      mainTasks: 'main tasks of the job',
+      date: 'date(from and until)',
+      editing: false
+    }));
   }
 
-  showBtn = () => {
+  const showBtn = () => {
     document.getElementById('addJobBtn').style.display = 'block';
   }
 
-  hideBtn = () => {
+  const hideBtn = () => {
     document.getElementById('addJobBtn').style.display = 'none';
   }
 
 
-  render() {
-    return (
-      <div className="jobContainer">
-        <div className="titleWrapper" onMouseOver={this.showBtn} onMouseLeave={this.hideBtn}>
-          <h1>Practical experience</h1>
-          <button id='addJobBtn' className="inputBoxButton" onClick={this.addJob}>Add</button>
-        </div>
-        <JobOverview jobs={this.state.jobs} editJob={this.editJob}
-          resubmitJob={this.resubmitJob} deleteJob={this.deleteJob} />
+  return (
+    <div className="jobContainer">
+      <div className="titleWrapper" onMouseOver={showBtn} onMouseLeave={hideBtn}>
+        <h1>Practical experience</h1>
+        <button id='addJobBtn' className="inputBoxButton" onClick={addJob}>Add</button>
       </div>
-    )
-  }
+      <JobOverview jobs={jobs} editJob={editJob}
+        resubmitJob={resubmitJob} deleteJob={deleteJob} />
+    </div>
+  )
 };
 
 export default Job;

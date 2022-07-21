@@ -1,53 +1,39 @@
-import { Component } from "react";
+import { useState } from "react";
 
-class InputBox extends Component {
-  constructor(props) {
-    super(props);
+const InputBox = () => {
 
-    this.state = {
-      editing: false,
-      value: 'click me to edit'
-    }
-  };
+  const [editing, setEditing] = useState(false);
+  const [value, setValue] = useState('click me to edit');
 
-  handleChange = (e) => {
-    this.setState({
-      value: e.target.value
-    })
+  const handleChange = (e) => {
+    setValue(e.target.value);
   }
 
-  edit = () => {
-    this.setState({
-      editing: true
-    })
+  const edit = () => {
+    setEditing(true);
   }
 
-  resubmit = () => {
-    this.setState({
-      editing: false
-    })
+  const resubmit = () => {
+    setEditing(false);
   }
 
-  handleKeyDown = (e) => {
+  const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
       this.resubmit();
     }
   }
 
-  render() {
-    const { editing, value } = this.state;
-    if (editing) {
-      return (
-        <div>
-          <input type='text' onChange={this.handleChange} defaultValue={value} onKeyDown={this.handleKeyDown} />
-          <button className="inputBoxButton" onClick={this.resubmit}>Done</button>
-        </div>
-      )
-    } else {
-      return (
-        <p onClick={this.edit}>{value === '' ? 'click me to edit' : value}</p>
-      )
-    }
+  if (editing) {
+    return (
+      <div>
+        <input type='text' onChange={handleChange} defaultValue={value} onKeyDown={handleKeyDown} />
+        <button className="inputBoxButton" onClick={resubmit}>Done</button>
+      </div>
+    )
+  } else {
+    return (
+      <p onClick={edit}>{value === '' ? 'click me to edit' : value}</p>
+    )
   }
 };
 
